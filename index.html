@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Enfora Calculator</title>
+    <style>
+      label{ display: block; }
+      .code{ font-weight: bold}
+    </style>
+  </head>
+  <body>
+    <h1>Enfora Event Codes Calculator</h1>
+    <label><input type="checkbox" checked="checked" value="1"/>ASCII (0) or Binary (1) format</label>
+    <label><input type="checkbox" checked="checked" value="2"/>User Specified Number</label>
+    <label><input type="checkbox" checked="checked" value="4"/>Modem ID</label>
+    <label><input type="checkbox" checked="checked" value="8"/>GPIO</label>
+    <label><input type="checkbox" checked="checked" value="16"/>A/D 1</label>
+    <label><input type="checkbox" checked="checked" value="32"/>A/D 2</label>
+    <label><input type="checkbox" checked="checked" value="64"/>Store GPS Messages</label>
+    <label><input type="checkbox" checked="checked" value="128"/>Input Event</label>
+    <label><input type="checkbox" checked="checked" value="256"/>Binary Date or NMEA GGA message</label>
+    <label><input type="checkbox" checked="checked" value="512"/>Binary Status or NMEA GLL message</label>
+    <label><input type="checkbox" checked="checked" value="1024"/>Binary Latitude or NMEA GSA message</label>
+    <label><input type="checkbox" checked="checked" value="2048"/>Binary Longitude or NMEA GSV message</label>
+    <label><input type="checkbox" checked="checked" value="4096"/>Binary Speed or NMEA RMC message</label>
+    <label><input type="checkbox" checked="checked" value="8192"/>Binary Heading or NMEA VTG message</label>
+    <label><input type="checkbox" checked="checked" value="16384"/>Binary Time</label>
+    <label><input type="checkbox" checked="checked" value="32768"/>Binary Altitude</label>
+    <label><input type="checkbox" checked="checked" value="65536"/>Binary Number of Satellites</label>
+    <label><input type="checkbox" checked="checked" value="131072"/>Binary Disable OTA messages in low pwr mode</label>
+    <label><input type="checkbox" checked="checked" value="262144"/>Send message with SMS as backup OTA method</label>
+    <label><input type="checkbox" checked="checked" value="524288"/>Send Last know GPS data if GPS is Invalid</label>
+    <label><input type="checkbox" checked="checked" value="1048576"/>GPS Odometer</label>
+    <label><input type="checkbox" checked="checked" value="2097152"/>RTC Time</label>
+    <p>Event Code: <span class="code"></span></p>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      (function($){
+        $(function(){
+          $(':checkbox').change(function(){
+            var val = 0;
+            $(':checkbox:checked').each(function(){ val += parseInt($(this).val(),10) });
+            $('.code').text(val);
+          }).trigger('change');
+        })
+      }(jQuery))
+    </script>
+  </body>
+</html>
